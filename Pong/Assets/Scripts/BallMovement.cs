@@ -19,11 +19,16 @@ public class BallMovement : MonoBehaviour
     public GameObject borderTop;
     public GameObject borderBottom;
 
+    [Header("Players")]
+    public GameObject player1;
+    public GameObject player2;
+
     [Header("Variables")]
     public float speed = 7.0f;
 
     public float direction;
     public Vector3 newPosition;
+    public int directionChanges = 0;
 
     void Start()
     {
@@ -33,6 +38,9 @@ public class BallMovement : MonoBehaviour
         goal2 = GameObject.FindGameObjectWithTag("Goal 2");
         borderTop = GameObject.FindGameObjectWithTag("Border Top");
         borderBottom = GameObject.FindGameObjectWithTag("Border Bottom");
+
+        player1 = GameObject.FindGameObjectWithTag("Player 1");
+        player2 = GameObject.FindGameObjectWithTag("Player 2");
 
         StartGame();
     }
@@ -44,24 +52,9 @@ public class BallMovement : MonoBehaviour
 
     public void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("Border Top"))
+        if (collision.CompareTag("Border Top") || collision.CompareTag("Border Bottom"))
         {
-            if (direction < Mathf.PI / 2 && direction < 0.0f)
-            {
-                direction = Mathf.PI * 2 - direction;
-            } else
-            {
-                direction += Mathf.PI / 2;
-            }
-        } else if (collision.CompareTag("Border Bottom"))
-        {
-            if (direction > 3 * Mathf.PI / 2 && direction < Mathf.PI * 2)
-            {
-                direction = Mathf.PI * 2 - direction;
-            } else
-            {
-                direction -= Mathf.PI / 2;
-            }
+            direction = Mathf.PI * 2 - direction;
         } else if (collision.CompareTag("Goal 1"))
         {
             int score2 = int.Parse(scorePlayer2.text) + 1;
@@ -82,6 +75,7 @@ public class BallMovement : MonoBehaviour
     public void StartGame()
     {
         ball.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+        speed = 7.0f;
 
         float limitUp = 15.0f;
         float limitDown = -15.0f;
@@ -98,6 +92,11 @@ public class BallMovement : MonoBehaviour
             direction += 180.0f;
         }
 
+        if (direction < 0)
+        {
+            direction += 360;
+        }
+
         direction = direction * Mathf.PI / 180f;
     }
 
@@ -105,10 +104,5 @@ public class BallMovement : MonoBehaviour
     {
         newPosition = new Vector3(ball.transform.localPosition.x + Mathf.Cos(direction) * Time.deltaTime * speed, 0.0f, ball.transform.localPosition.z + Mathf.Sin(direction) * Time.deltaTime * speed);
         ball.transform.localPosition = newPosition;
-    }
-
-    public void CheckBorders()
-    {
-        
     }
 }

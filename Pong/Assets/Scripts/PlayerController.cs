@@ -7,9 +7,12 @@ public class PlayerController : MonoBehaviour
     [Header("Initialization")]
     public GameObject player;
 
+    [Header("Controls")]
+    public KeyCode up = KeyCode.UpArrow;
+    public KeyCode down = KeyCode.DownArrow;
+
     [Header("Variables")]
     public float speed = 10.0f;
-
     float newPosition = 0.0f;
 
     void Start()
@@ -19,11 +22,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(up))
         {
             NewPosition(1);
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(down))
         {
             NewPosition(-1);
         }
