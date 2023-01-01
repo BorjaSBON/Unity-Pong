@@ -13,6 +13,8 @@ TagManager:
   - ScorePlayer2
   - Player 1
   - Player 2
+  - Background
+  - Divider
   layers:
   - Default
   - TransparentFX
