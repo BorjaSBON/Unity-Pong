@@ -3412,8 +3412,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  up: 273
-  down: 274
+  up: 119
+  down: 115
   speed: 10
 --- !u!54 &1539942266
 Rigidbody:
@@ -3457,7 +3457,9 @@ GameObject:
   - component: {fileID: 1738837763}
   - component: {fileID: 1738837762}
   - component: {fileID: 1738837761}
+  - component: {fileID: 1738837768}
   - component: {fileID: 1738837764}
+  - component: {fileID: 1738837767}
   - component: {fileID: 1738837766}
   - component: {fileID: 1738837765}
   m_Layer: 0
@@ -3591,6 +3593,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   ball: {fileID: 0}
+--- !u!114 &1738837767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738837759}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c06dcf101c660d448b99540bd8a1f3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  up: 273
+  down: 274
+  speed: 10
+--- !u!114 &1738837768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738837759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1561aaf8633e672429487e7f016a3ecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondPlayer: {fileID: 0}
+  level: 0
 --- !u!1 &1742119154
 GameObject:
   m_ObjectHideFlags: 0

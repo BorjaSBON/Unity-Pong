@@ -9,7 +9,7 @@ public class IAController : MonoBehaviour
     public GameObject ball;
 
     [Header("Variables")]
-    public int level = 0;
+    public int level;
     public float speed = 10.0f;
 
     int direction = 0;
@@ -17,29 +17,22 @@ public class IAController : MonoBehaviour
 
     void Start()
     {
+        level = MapSelection.levelIA;
         ia = gameObject;
         ball = GameObject.FindGameObjectWithTag("Ball");
-
-        Level();
     }
 
-    void Update()
-    {
-        //NewPosition();
-        LevelEasy();
-    }
-
-    public void Level()
+    void FixedUpdate()
     {
         if (level == 0)
         {
-            speed = 7.0f;
+            LevelEasy();
         } else if (level == 1)
         {
-            speed = 10.0f;
-        } else
+            LevelNormal();
+        } else if (level == 2)
         {
-            speed = 12.0f;
+            LevelNormal();
         }
     }
 
@@ -89,7 +82,26 @@ public class IAController : MonoBehaviour
 
     public void LevelNormal()
     {
+        if (ball.transform.localPosition.z > ia.transform.localPosition.z + ia.transform.localScale.z / 8)
+        {
+            direction = 1;
+        }
+        else if (ball.transform.localPosition.z < ia.transform.localPosition.z - ia.transform.localScale.z / 8)
+        {
+            direction = -1;
+        }
+        else if (ball.transform.localPosition.z < ia.transform.localPosition.z + ia.transform.localScale.z / 8 && ball.transform.localPosition.z > ia.transform.localPosition.z - ia.transform.localScale.z / 8)
+        {
+            direction = 0;
+        }
 
+        newPosition = ia.transform.localPosition.z + direction * Time.deltaTime * speed;
+        if (-1 * direction * newPosition <= -7.9f)
+        {
+            newPosition = direction * 7.9f;
+        }
+
+        ia.transform.localPosition = new Vector3(ia.transform.localPosition.x, 0.0f, newPosition);
     }
 
     public void LevelHard()

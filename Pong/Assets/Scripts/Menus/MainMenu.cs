@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class MainMenu : MonoBehaviour
     public GameObject play;
     public GameObject stadistics;
     public GameObject options;
+
+    [Header("Play")]
+    public TextMeshProUGUI map;
+    public TextMeshProUGUI level;
 
     void Awake()
     {
@@ -26,6 +31,28 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
+        mainMenu.SetActive(false);
+        play.SetActive(true);
+    }
+
+    public void PlayGame()
+    {
+        MapSelection.mapType = map.text;
+
+        if (level.text == "Easy")
+        {
+            MapSelection.levelIA = 0;
+        } else if (level.text == "Normal")
+        {
+            MapSelection.levelIA = 1;
+        } else if (level.text == "Hard")
+        {
+            MapSelection.levelIA = 2;
+        } else
+        {
+            MapSelection.levelIA = -1;
+        }
+
         SceneManager.LoadScene("Game");
     }
 
@@ -34,7 +61,7 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void Stadistics ()
+    public void Stadistics()
     {
         stadistics.SetActive(true);
         mainMenu.SetActive(false);

@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         player = gameObject;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKey(up))
         {
