@@ -24,3 +24,8 @@ The game is in both Spanish and English.
 
 ## Screenshots
 
+Classic Map
+![Classic Map](https://github.com/BorjaSBON/Unity-Pong/blob/main/Screenshots/Classic%20Map.jpg?raw=true)
+
+Classic Pro Map
+![Classic Pro Map](https://github.com/BorjaSBON/Unity-Pong/blob/main/Screenshots/Classic%20Pro%20Map.jpg?raw=true)
