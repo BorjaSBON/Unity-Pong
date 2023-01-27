@@ -57,7 +57,7 @@ public class MapGenerator : MonoBehaviour
             } else if (material.name == "Ball")
             {
                 ball.GetComponent<MeshRenderer>().material = material;
-            } else if (material.name == "Gaols")
+            } else if (material.name == "Goals")
             {
                 goal1.GetComponent<MeshRenderer>().material = material;
                 goal2.GetComponent<MeshRenderer>().material = material;
